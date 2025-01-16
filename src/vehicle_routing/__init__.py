@@ -8,6 +8,7 @@ def main():
                             host="0.0.0.0", # Because we are running in a docker container
                             port=8080,
                             log_config="logging.conf",
+                            reload=True,
                             use_colors=True)
     server = uvicorn.Server(config)
     server.run()
