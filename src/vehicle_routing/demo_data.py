@@ -79,6 +79,9 @@ class DemoData(Enum):
     #                                        longitude=11.177210),
     #                               Location(latitude=43.809291,
     #                                        longitude=11.290195))
+    
+    # For easier reference what each param is:
+
     # seed: int
     # visit_count: int
     # vehicle_count: int
@@ -98,31 +101,31 @@ class DemoData(Enum):
     
     Latvija_Nemainiga_60_5 = _DemoDataProperties(2, 60, 5, time(8, 0),
                         5, 20, 80, 80,
-                        Location(latitude=56.381728,
-                                longitude=24.440292),
-                        Location(latitude=57.346780,
-                                longitude=27.568162))
+                        Location(latitude=56.604358,
+                                longitude=24.622341),
+                        Location(latitude=58.536250,
+                                longitude=27.194218))
     
     Latvija_Nemainiga_120_10 = _DemoDataProperties(2, 100, 20, time(8, 0),
                             5, 20, 80, 80,
-                            Location(latitude=56.381728,
-                                    longitude=24.440292),
-                            Location(latitude=57.346780,
-                                    longitude=27.568162))
+                        Location(latitude=56.604358,
+                                longitude=24.622341),
+                        Location(latitude=58.536250,
+                                longitude=27.194218))
     
     Latvija_Nemainiga_500_100 = _DemoDataProperties(3, 1000, 250, time(8, 0),
                         5, 20, 80, 80,
-                        Location(latitude=56.381728,
-                                longitude=24.440292),
-                        Location(latitude=57.346780,
-                                longitude=27.568162))
+                        Location(latitude=56.604358,
+                                longitude=24.622341),
+                        Location(latitude=58.536250,
+                                longitude=27.194218))
     
-    Latvija_55_6 = _DemoDataProperties(None, 55, 6, time(8, 0),
+    Latvija_Nejausa_55_6 = _DemoDataProperties(None, 55, 6, time(8, 0),
                                 5, 20, 80, 80,
-                                Location(latitude=56.381728,
-                                        longitude=24.440292),
-                                Location(latitude=57.346780,
-                                        longitude=27.568162))
+                        Location(latitude=56.604358,
+                                longitude=24.622341),
+                        Location(latitude=58.536250,
+                                longitude=27.194218))
 
 
 def doubles(random: Random, start: float, end: float) -> Generator[float, None, None]:
