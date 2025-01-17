@@ -325,8 +325,11 @@ function renderTimelines(routePlan) {
 }
 
 function analyze() {
-    // see score-analysis.js
-    analyzeScore(loadedRoutePlan, "/route-plans/analyze")
+    if (!scheduleId) {
+        showError("No scheduleId is set. Please solve first.");
+        return;
+    }
+    analyzeScore(loadedRoutePlan, "/route-plans/" + scheduleId + "/analyze");
 }
 
 // TODO: move the general functionality to the webjar.
@@ -359,15 +362,35 @@ function setupAjax() {
 }
 
 function solve() {
-    $.post("/route-plans", JSON.stringify(loadedRoutePlan), function (data) {
+    // user inputs
+    const solverConfig = $("#solverConfigSelect").val();       
+    const timeLimitSeconds = $("#timeLimitInput").val(); 
+
+    // combined object with the new params
+    const payload = {
+        ...loadedRoutePlan,
+        solverConfig: solverConfig,
+        timeLimitSeconds: parseInt(timeLimitSeconds) || 30
+    };
+
+    // send it as JSON
+    $.ajax({
+        url: "/route-plans",
+        method: "POST",
+        data: JSON.stringify(payload),
+        dataType: "text",       
+        contentType: "application/json; charset=utf-8"
+    })
+    .done(function (data) {
         scheduleId = data;
         refreshSolvingButtons(true);
-    }).fail(function (xhr, ajaxOptions, thrownError) {
-            showError("Start solving failed.", xhr);
-            refreshSolvingButtons(false);
-        },
-        "text");
+    })
+    .fail(function (xhr, status, error) {
+        showError("Start solving failed.", xhr);
+        refreshSolvingButtons(false);
+    });
 }
+
 
 function refreshSolvingButtons(solving) {
     optimizing = solving;

@@ -63,13 +63,27 @@
     </div>
 
     <div class="tab-content">
-
       <div class="tab-pane fade show active" id="mapPanel" role="tabpanel" aria-labelledby="mapTab">
         <div class="row">
           <div class="col-7 col-lg-8 col-xl-9">
             <div id="map" style="width: 100%; height: 100vh;"></div>
           </div>
           <div class="col-5 col-lg-4 col-xl-3" style="height: 100vh; overflow-y: scroll;">
+            <div class="row mb-2">
+              <div class="col-12">
+                <label for="solverConfigSelect" class="form-label">Optimization algorithm</label>
+                <select id="solverConfigSelect" class="form-select">
+                  <!-- TODO add a constants file for JS as well -->
+                  <option value="SIMULATED_ANNEALING">Simulated Annealing</option>
+                  <option value="">Option2</option>
+                  <option value="">Option3</option>
+                </select>
+              </div>
+              <div class="col-12 mt-2">
+                <label for="timeLimitInput" class="form-label">Time limit (seconds):</label>
+                <input type="number" id="timeLimitInput" class="form-control" value="30" min="1">
+              </div>
+            </div>
             <div class="row pt-2 row-cols-1">
               <div class="col">
                 <h5>
