@@ -14,6 +14,10 @@ def define_constraints(factory: ConstraintFactory):
         vehicle_capacity(factory),
         service_finished_after_max_end_time(factory),
         # Soft constraints
+        
+        # Make sure each truck has a similar work load (time spent on the road)
+        # equalize_workload_time(factory)
+
         minimize_travel_time(factory)
     ]
 

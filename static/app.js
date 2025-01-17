@@ -74,13 +74,13 @@ $(document).ready(function () {
     $("#byVisitTab").on('shown.bs.tab', function (event) {
         byVisitTimeline.redraw();
     })
-    // Add new visit
-    map.on('click', function (e) {
-        visitMarker = L.circleMarker(e.latlng);
-        visitMarker.setStyle({color: 'green'});
-        visitMarker.addTo(map);
-        openRecommendationModal(e.latlng.lat, e.latlng.lng);
-    });
+    // Add new visit, TODO Fix this, it doesn't work
+    // map.on('click', function (e) {
+    //     visitMarker = L.circleMarker(e.latlng);
+    //     visitMarker.setStyle({color: 'green'});
+    //     visitMarker.addTo(map);
+    //     openRecommendationModal(e.latlng.lat, e.latlng.lng);
+    // });
     // Remove visit mark
     $("#newVisitModal").on("hidden.bs.modal", function () {
         map.removeLayer(visitMarker);
