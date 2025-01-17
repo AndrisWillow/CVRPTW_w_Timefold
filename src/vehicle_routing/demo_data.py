@@ -92,33 +92,40 @@ class DemoData(Enum):
     # max_vehicle_capacity: int
     # south_west_corner: Location
     # north_east_corner: Location
-    Latvija_Valmiera_Nemainiga_25_3 = _DemoDataProperties(1, 25, 3, time(8, 0),
+    Latvija_Valmiera_Nemainiga_15_3 = _DemoDataProperties(1, 15, 3, time(8, 0),
                                 5, 20, 80, 80,
                                 Location(latitude=57.080804,
                                         longitude=24.791306),
                                 Location(latitude=57.684820,
                                         longitude=25.940320))
     
-    Latvija_Nemainiga_60_5 = _DemoDataProperties(2, 60, 5, time(8, 0),
+    Latvija_Nemainiga_30_5 = _DemoDataProperties(2, 30, 5, time(8, 0),
                         5, 20, 80, 80,
                         Location(latitude=56.604358,
                                 longitude=24.622341),
                         Location(latitude=58.536250,
                                 longitude=27.194218))
     
-    Latvija_Nemainiga_120_10 = _DemoDataProperties(2, 100, 20, time(8, 0),
+    Latvija_Nemainiga_50_10 = _DemoDataProperties(2, 50, 10, time(8, 0),
                             5, 20, 80, 80,
                         Location(latitude=56.604358,
                                 longitude=24.622341),
                         Location(latitude=58.536250,
                                 longitude=27.194218))
     
-    Latvija_Nemainiga_500_100 = _DemoDataProperties(3, 1000, 250, time(8, 0),
+    Latvija_Nemainiga_500_100 = _DemoDataProperties(3, 500, 100, time(8, 0),
                         5, 20, 80, 80,
                         Location(latitude=56.604358,
                                 longitude=24.622341),
                         Location(latitude=58.536250,
                                 longitude=27.194218))
+    
+    Latvija_Nemainiga_1000_200 = _DemoDataProperties(3, 1000, 200, time(8, 0),
+                    5, 20, 80, 80,
+                    Location(latitude=56.604358,
+                            longitude=24.622341),
+                    Location(latitude=58.536250,
+                            longitude=27.194218))
     
     Latvija_Nejausa_55_6 = _DemoDataProperties(None, 55, 6, time(8, 0),
                                 5, 20, 80, 80,

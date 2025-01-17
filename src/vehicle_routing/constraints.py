@@ -5,6 +5,7 @@ from .domain import *
 VEHICLE_CAPACITY = "vehicleCapacity"
 MINIMIZE_TRAVEL_TIME = "minimizeTravelTime"
 SERVICE_FINISHED_AFTER_MAX_END_TIME = "serviceFinishedAfterMaxEndTime"
+EQUALIZE_WORKLOAD_TIME = "equalizeWorkloadTime"
 
 
 @constraint_provider
@@ -16,8 +17,7 @@ def define_constraints(factory: ConstraintFactory):
         # Soft constraints
         
         # Make sure each truck has a similar work load (time spent on the road)
-        # equalize_workload_time(factory)
-
+        # equalize_workload_time(factory),
         minimize_travel_time(factory)
     ]
 
@@ -52,6 +52,18 @@ def minimize_travel_time(factory: ConstraintFactory):
     return (
         factory.for_each(Vehicle)
         .penalize(HardSoftScore.ONE_SOFT,
-                  lambda vehicle: vehicle.calculate_total_driving_time_seconds())
+                  lambda vehicle: vehicle.calculate_total_driving_time_seconds() * 2)
         .as_constraint(MINIMIZE_TRAVEL_TIME)
+    )
+
+def equalize_workload_time(factory: ConstraintFactory):
+    def time_difference_squared(vehicle1: Vehicle, vehicle2: Vehicle) -> int:
+        difference = vehicle1.total_driving_time_seconds - vehicle2.total_driving_time_seconds
+        difference_squared = difference ** 2
+        return difference_squared
+
+    return (
+        factory.for_each_unique_pair(Vehicle)
+        .penalize(HardSoftScore.ONE_SOFT, time_difference_squared)
+        .as_constraint(EQUALIZE_WORKLOAD_TIME)
     )
